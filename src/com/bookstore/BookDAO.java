@@ -157,4 +157,24 @@ public class BookDAO
 		
 		return path;
 	}
+	
+	
+	public static int addBook(Book b){  
+	    int status=0;  
+	    try{  
+	        Connection con=getConnection();  
+	        PreparedStatement ps=con.prepareStatement("insert into library(name,id,price,auther,descp) values(?,?,?,?,?)");  
+	        ps.setString(1,b.getName());  
+	        ps.setInt(2,b.getId());  
+	        ps.setInt(3,b.getPrice());  
+	        ps.setString(4,b.getAuther());
+	        ps.setString(5,b.getDescp()); 
+	        
+	        status=ps.executeUpdate(); 
+	        
+	    	}
+	    catch(Exception e){System.out.println(e);}  
+	    return status;  
+	}
+
 }
