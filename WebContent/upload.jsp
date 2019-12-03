@@ -19,7 +19,7 @@
    int maxFileSize = 5000 * 1024;
    int maxMemSize = 5000 * 1024;
    // String filePath = "D:/img/";
-	String filePath1 = "C:/images/";
+
 	String filePath = "D:/img/";
    String contentType = request.getContentType();
    if ((contentType.indexOf("multipart/form-data") >= 0)) {
