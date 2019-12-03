@@ -7,10 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="upload.jsp" method="post"
-                        enctype="multipart/form-data">
-<input type="file" name="file" size="50" />
+
+		
+<form action="upload.jsp" method="post" enctype="multipart/form-data">
+
+	<%
+		String id = request.getParameter("id");
+		int bid = Integer.parseInt(id);
+	%>
+
+<input type=text name="bookId" value=<%=bid%>>
 <br />
+<input type="file" name="file" size="50" />
 <input type="submit" value="Upload File" />
 </form>
 </body>

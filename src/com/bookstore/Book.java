@@ -3,9 +3,16 @@ package com.bookstore;
 public class Book {
 
 	
-	String name,auther,descp;
-	
+	String name,auther,descp,btitle;
 	int id,price;
+	
+	
+	public String getBtitle() {
+		return btitle;
+	}
+	public void setBtitle(String btitle) {
+		this.btitle = btitle;
+	}
 	
 	
 	public String getName() {

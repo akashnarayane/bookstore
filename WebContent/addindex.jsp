@@ -8,6 +8,7 @@
 </head>
 <body>
 <body>
+
 		<ul>
 			<li><a class="active" href="#">Home</a></li>
 			
@@ -31,8 +32,11 @@
 		   </nav>
 		 </div>
 	</div>
+	
 	<div id="righter">
-	<form  action="addbook.jsp" method="get" >
+	
+	
+	<form  action="addbook.jsp" method="get" enctype="multipart/form-data" >
 <table>
 <tr>
 	<td>Select Book:</td>
@@ -45,12 +49,12 @@
 	</select>  
 	</td>
 </tr>
-<!-- <tr>
-	<td>Image:</td>
-	<td><input name="file" type="file"></td>
-</tr> -->
 <tr>
-  <td>Book No: </td>
+	<td>Book Title</td>
+	<td><input name="btitle" type="text"></td>
+</tr> 
+<tr>
+  <td>Book id: </td>
   <td><input name="id" type="text"></td>
 </tr>
 <tr>
@@ -65,20 +69,25 @@
 	<td>Description:</td>
 	<td><textarea name="descp" cols="35" rows="6"></textarea></td>
 </tr>
+
 <tr>
 	<td  colspan="2" align="center"><input type="submit" value="Add Book">
-	</td></tr>
+	</td>
+</tr>
 </table>
 
+	
+	
+	
  <span style="color:red">
 <%= request.getParameter("message")%>
 
 
 </span>
-<!-- ${param["message"]} -->
 </form>
 
 </div>
+	
 	
 </body>
 <style>

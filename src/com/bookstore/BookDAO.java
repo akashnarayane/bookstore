@@ -121,15 +121,16 @@ public class BookDAO
 		return status;
 	}
 	
-	public static int addImg(String src)
+	public static int addImg(String src, int bid)
 	{
-		
+		System.out.println(src);
 		int status = 0;
 		try 
 		{
 			Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement("insert into image(path) values(?)");
+			PreparedStatement ps = con.prepareStatement("update library set image =? where id =?");
 			ps.setString(1, src);
+			ps.setInt(2, bid);
 			status = ps.executeUpdate();
 		}
 		catch (SQLException e)
@@ -163,12 +164,14 @@ public class BookDAO
 	    int status=0;  
 	    try{  
 	        Connection con=getConnection();  
-	        PreparedStatement ps=con.prepareStatement("insert into library(name,id,price,auther,descp) values(?,?,?,?,?)");  
-	        ps.setString(1,b.getName());  
-	        ps.setInt(2,b.getId());  
-	        ps.setInt(3,b.getPrice());  
-	        ps.setString(4,b.getAuther());
-	        ps.setString(5,b.getDescp()); 
+	        PreparedStatement ps=con.prepareStatement
+	        		("insert into library(id,name,title,price,auther,descp) values(?,?,?,?,?,?)");  
+	        ps.setInt(1, b.getId());
+	        ps.setString(2,b.getName()); 
+	        ps.setString(3, b.getBtitle());
+	        ps.setInt(4,b.getPrice());  
+	        ps.setString(5,b.getAuther());
+	        ps.setString(6,b.getDescp()); 
 	        
 	        status=ps.executeUpdate(); 
 	        

@@ -14,6 +14,10 @@
 </head>
 <body>
 <%@page import="com.bookstore.BookDAO" %>
+
+<% String id = request.getParameter("bookId");
+	int bid = Integer.parseInt(id);
+%>
 <%
    File file ;
    int maxFileSize = 5000 * 1024;
@@ -54,7 +58,7 @@
                 fi.write( file ) ;
                 String imgPath = filePath + fileName;
                 
-              	int status = BookDAO.addImg(imgPath);
+              	int status = BookDAO.addImg(imgPath,bid );
                 if(status>0)
                 {
                 	out.println("Uploaded Filename: " + imgPath + "<br>");
