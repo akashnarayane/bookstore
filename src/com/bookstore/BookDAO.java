@@ -204,4 +204,24 @@ public class BookDAO
 		return res;	
 	}
 
+	
+	public static ResultSet getBookInfo(int bid)
+	{
+		ResultSet res = null;
+		 try 
+		 {
+			Connection con=getConnection();
+			PreparedStatement ps=con.prepareStatement("select * from library where id = ?");
+			ps.setInt(1, bid);
+			res = ps.executeQuery();
+		 }
+		 
+		 catch (SQLException e) {
+			
+			e.printStackTrace();
+		}  
+	      
+		
+		return res;	
+	}
 }

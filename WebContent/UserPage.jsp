@@ -290,7 +290,7 @@ $("#show-sidebar").click(function() {
 							<a class="nav-link" href="#">Home</a>
 						</li>
 						<li class="nav-item ">
-							<a class="nav-link" href="#">Account</a>
+							<a class="nav-link" href="#">Cart</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="javascript:go()">Logout</a>
@@ -342,8 +342,18 @@ $("#show-sidebar").click(function() {
 					bPrice[j] = price.get(j);
 					bAuthor[j] = author.get(j);
 					bDesc[j] = desc.get(j);
-					path[j] = imgPath.get(j);	
-				}		
+					path[j] = imgPath.get(j);
+					
+				}	
+				
+				/* session.setAttribute("bookid",bookId[j]);
+				session.setAttribute("bTitle",bTitle[j]);
+				session.setAttribute("bPrice",bPrice[j]);
+				session.setAttribute("bAuthor",bAuthor[j]);
+				session.setAttribute("bDesc",bDesc[j]);
+				session.setAttribute("path",path[j]); */
+				
+				
 			%>
 			<br>
 				<div class="col-xs-12 col-sm-6 col-md-4">
@@ -384,9 +394,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[1]%>" >
+                                    <h4 class="card-title"><%=bTitle[1]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[1] %></p>
                          
                                 </div>
                             </div>
@@ -397,9 +407,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[1]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[1] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -417,9 +427,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[2]%>" >
+                                    <h4 class="card-title"><%=bTitle[2]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[2] %></p>
                          
                                 </div>
                             </div>
@@ -430,9 +440,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[2]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[2] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -450,9 +460,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[3]%>" >
+                                    <h4 class="card-title"><%=bTitle[3]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[3] %></p>
                          
                                 </div>
                             </div>
@@ -463,9 +473,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[3]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[3] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -480,9 +490,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[4]%>" >
+                                    <h4 class="card-title"><%=bTitle[4]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[4] %></p>
                          
                                 </div>
                             </div>
@@ -493,9 +503,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[4]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[4] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -510,9 +520,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[5]%>" >
+                                    <h4 class="card-title"><%=bTitle[5]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[5] %></p>
                          
                                 </div>
                             </div>
@@ -523,9 +533,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[5]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[5] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -540,9 +550,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[6]%>" >
+                                    <h4 class="card-title"><%=bTitle[6]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[6] %></p>
                          
                                 </div>
                             </div>
@@ -553,9 +563,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[6]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[6] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -570,9 +580,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[7]%>" >
+                                    <h4 class="card-title"><%=bTitle[7]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[7] %></p>
                          
                                 </div>
                             </div>
@@ -583,9 +593,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[7]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[7] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -600,9 +610,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[8]%>" >
+                                    <h4 class="card-title"><%=bTitle[8]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[8] %></p>
                          
                                 </div>
                             </div>
@@ -613,9 +623,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[8]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[8] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -630,9 +640,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[9]%>" >
+                                    <h4 class="card-title"><%=bTitle[9]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[9] %></p>
                          
                                 </div>
                             </div>
@@ -643,9 +653,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[9]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[9] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -660,9 +670,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[10]%>" >
+                                    <h4 class="card-title"><%=bTitle[10]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[10] %></p>
                          
                                 </div>
                             </div>
@@ -673,9 +683,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[10]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[10] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
@@ -691,9 +701,9 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <img src="<%=path[0]%>" >
-                                    <h4 class="card-title"><%=bTitle[0]%></h4>
-                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                                    <img src="<%=path[11]%>" >
+                                    <h4 class="card-title"><%=bTitle[11]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[11] %></p>
                          
                                 </div>
                             </div>
@@ -704,9 +714,9 @@ $("#show-sidebar").click(function() {
                                 <div class="card-body text-center">
                                      <br><br><br>
                                      <h4 class="card-title">Book Price</h4>
-                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <h2 class="card-text"><%=bPrice[11]%>&#8377;</h2>
                                     <br><br><br>
-                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                    <a href="productPage.jsp?bookId=<%=bookId[11] %>"
                                      class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
