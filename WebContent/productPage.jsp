@@ -29,22 +29,25 @@ html, body {
 }
 </style>
 
+
+<script type="text/javascript">
+function go() {
+	window.location.replace("UsrLogout.jsp",'window','toolbar=1,location=1,directories=1,status=1,menubar=1,scrollbars=1,resizable=1');
+	self.close()
+	}
+</script>
 </head>
 <body>
 <%@page import="com.bookstore.BookDAO"%>  
 	<%
 		String id = request.getParameter("bookId");
 		int bid = Integer.parseInt(id);
-		out.println("Book id is : "+bid);
-		
+	
 		
 		String sessId = (String)session.getId();
 		String name = (String)session.getAttribute("name");
 		Integer userid =(Integer)session.getAttribute("id");	
-		out.println("Welcome : "+name);
-		out.println("Your id : "+userid);
-		
-		
+			
 		ResultSet res = BookDAO.getBookInfo(bid);
 		
 		
@@ -64,7 +67,7 @@ html, body {
 			path = res.getString(7);
 		}
 		
-		out.print("Selected book : "+bookId);
+		//out.print("Selected book : "+bookId);
 		
 	%>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -87,49 +90,25 @@ html, body {
 						
 					</ul>
 				</nav>	
-<!-- <div class="container">
 
+
+
+<div class="container">
   <div class="row">
-    <div class="col" style="background-color:lightblue ;height:100%" >
-     	
+    <div class="col-sm-5 ">
+     <img src="<%=path%>" height="500px" width="380px"> 
     </div>
-    <div class="col-md-auto">
-      Variable width content
+    <div class="col-sm-5 ">
+     	<h1><%=bTitle %></h1><br><br>
+     	<h5>Author : <%=bAuthor %></h5><br><br>
+     	<h6>About book : <%=bDesc %></h6><br><br>
+     	<h3>Price : <%=bPrice%>&#8377;</h3><br><br>
     </div>
-    <div class="col col-lg-2">
-      3 of 3
+    <div class="col-sm-2">
+      <button>Add to cart</button>
     </div>
-  </div>
-</div> -->
-
-<div style="height: 100%; background-color: rgba(255,0,0,0.1);">
-
-  <div class="h-75 d-inline-block" style="width:33.33% ; background-color: rgba(0,0,255,.1)">
-  	<%
-  		/* int bId = (Integer)session.getAttribute("bookid");
-  		String bTitle = (String)session.getAttribute("bTitle");
-  		int bPrice = (Integer)session.getAttribute("bPrice");
-  		String bAuthor = (String)session.getAttribute("bAuthor");
-  		String bDesc = (String)session.getAttribute("bDesc");
-  		String path = (String)session.getAttribute("path");
-  		out.print(bId); */
-  		/* out.print(bTitle);
-  		out.print(bPrice);
-  		out.print(bAuthor);
-  		out.print(bDesc);
-  		out.print(path); */
-  	%>
-  	
-  	
-  	
-	
-  </div>
-  <div class="h-100 d-inline-block" style="width: 39%; background-color: rgba(0,0,255,.1)">
-  	Height 75%
-  </div>
-  <div class="h-100 d-inline-block" style="width: 26.67%; background-color: rgba(0,0,255,.1)">
-  	Height 100%
   </div>
 </div>
+
 </body>
 </html>

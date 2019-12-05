@@ -346,13 +346,7 @@ $("#show-sidebar").click(function() {
 					
 				}	
 				
-				/* session.setAttribute("bookid",bookId[j]);
-				session.setAttribute("bTitle",bTitle[j]);
-				session.setAttribute("bPrice",bPrice[j]);
-				session.setAttribute("bAuthor",bAuthor[j]);
-				session.setAttribute("bDesc",bDesc[j]);
-				session.setAttribute("path",path[j]); */
-				
+
 				
 			%>
 			<br>
