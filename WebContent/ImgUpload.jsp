@@ -12,11 +12,12 @@
 <form action="upload.jsp" method="post" enctype="multipart/form-data">
 
 	<%
-		String id = request.getParameter("id");
-		int bid = Integer.parseInt(id);
+		int id = (Integer)session.getAttribute("bid");
+		out.print("Inside imgupload : "+id);
+		session.setAttribute("bid", id);
 	%>
 
-<input type=text name="bookId" value=<%=bid%>>
+<input type="text" name="bookId" value=<%=id%>>
 <br />
 <input type="file" name="file" size="50" />
 <input type="submit" value="Upload File" />

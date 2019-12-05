@@ -123,12 +123,16 @@ public class BookDAO
 	
 	public static int addImg(String src, int bid)
 	{
+		
 		System.out.println(src);
+		System.out.println("Inside DAO : "+bid);
 		int status = 0;
 		try 
 		{
 			Connection con = getConnection();
 			PreparedStatement ps = con.prepareStatement("update library set image =? where id =?");
+			
+			
 			ps.setString(1, src);
 			ps.setInt(2, bid);
 			status = ps.executeUpdate();
@@ -141,13 +145,13 @@ public class BookDAO
 		return status;
 	}
 	
-	public static String getImg()
+	public static String getImg(int id)
 	{
 		String path = null;
 		try 
 		{
 			Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement("select path from image");
+			PreparedStatement ps = con.prepareStatement("select image from library where id = ?");
 			ResultSet res = ps.executeQuery();
 			res.next();
 			path = res.getString(1);
@@ -178,6 +182,26 @@ public class BookDAO
 	    	}
 	    catch(Exception e){System.out.println(e);}  
 	    return status;  
+	}
+	
+	public static ResultSet getBooks()
+	{
+		ResultSet res = null;
+		 try 
+		 {
+			Connection con=getConnection();
+			PreparedStatement ps=con.prepareStatement("select * from library");
+			
+			res = ps.executeQuery();
+		 }
+		 
+		 catch (SQLException e) {
+			
+			e.printStackTrace();
+		}  
+	      
+		
+		return res;	
 	}
 
 }

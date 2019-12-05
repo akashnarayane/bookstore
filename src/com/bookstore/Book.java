@@ -34,6 +34,7 @@ public class Book {
 		this.descp = desrip;
 	}
 	public int getId() {
+		System.out.println("Book id is : "+id);
 		return id;
 	}
 	public void setId(int id) {

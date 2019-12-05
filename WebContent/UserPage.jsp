@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@page import="com.bookstore.Users"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -303,16 +304,58 @@ $("#show-sidebar").click(function() {
 		<h5 class="section-title h1">Books</h5>
 			<div class="row">
 			<!-- **************** -->
+			
+			<%@page import="com.bookstore.BookDAO"%> 
+			
+			<%
+				
+				ArrayList<Integer> bid = new ArrayList<Integer>();
+				ArrayList<String> title = new ArrayList<String>();
+				ArrayList<Integer> price = new ArrayList<Integer>();
+				ArrayList<String> author = new ArrayList<String>();
+				ArrayList<String> desc = new ArrayList<String>();
+				ArrayList<String> imgPath = new ArrayList<String>();
+				
+				ResultSet booklist = BookDAO.getBooks();
+				
+				while(booklist.next())
+				{
+					bid.add(booklist.getInt(1));
+					title.add(booklist.getString(3));
+					price.add(booklist.getInt(4));
+					author.add(booklist.getString(5));
+					desc.add(booklist.getString(6));
+					imgPath.add(booklist.getString(7));	
+				}
+				int[] bookId = new int[bid.size()];
+				String[] bTitle = new String[title.size()];
+				int[] bPrice = new int[price.size()];
+				String[] bAuthor= new String[author.size()];
+				String[] bDesc = new String[desc.size()];
+				String[] path = new String[imgPath.size()];
+				
+				
+				for(int j=0; j<imgPath.size(); j++)
+				{
+					bookId[j] = bid.get(j);
+					bTitle[j] = title.get(j);
+					bPrice[j] = price.get(j);
+					bAuthor[j] = author.get(j);
+					bDesc[j] = desc.get(j);
+					path[j] = imgPath.get(j);	
+				}		
+			%>
+			<br>
 				<div class="col-xs-12 col-sm-6 col-md-4">
 					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
 						<div class="mainflip">
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="images/javascript.jpg"></p>
-                                    <h4 class="card-title">C# 7.0</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
                                 </div>
                             </div>
                         </div>
@@ -320,15 +363,51 @@ $("#show-sidebar").click(function() {
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <h4 class="card-title">Description</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    
+                                    <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
                         </div>
 						</div>
 					</div>
 				</div>
+				
+				<!-- ***************************** -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+				
 				
 				<!-- ***************************** -->
 				
@@ -338,10 +417,10 @@ $("#show-sidebar").click(function() {
 						  <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
                                 </div>
                             </div>
                         </div>
@@ -349,10 +428,12 @@ $("#show-sidebar").click(function() {
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -360,10 +441,281 @@ $("#show-sidebar").click(function() {
 					</div>
 				</div>
 				
+				
+			
+				<!-- ***************************** -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+				<!-- ***************************** -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+				<!-- ***************************** -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+				<!-- ***************************** -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+				<!-- ***************************** -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+				<!-- ***************************** -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+				<!-- ***************************** -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
+				<!-- ***************************** -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
+				</div>
 				<!-- ***************************** -->
 				
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+						<div class="mainflip">
+						  <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="<%=path[0]%>" >
+                                    <h4 class="card-title"><%=bTitle[0]%></h4>
+                                    <p class="card-text">Author : <%=bAuthor[0] %></p>
+                         
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                     <br><br><br>
+                                     <h4 class="card-title">Book Price</h4>
+                                    <h2 class="card-text"><%=bPrice[0]%>&#8377;</h2>
+                                    <br><br><br>
+                                    <a href="productPage.jsp?bookId=<%=bookId[0] %>"
+                                     class="btn btn-primary btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+						</div>
+					</div>
 				</div>
-			</div>
+				<!-- ***************************** -->
+		</div>
 	</div>
 	
 </section>		 		

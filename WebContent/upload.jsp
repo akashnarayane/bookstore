@@ -15,16 +15,18 @@
 <body>
 <%@page import="com.bookstore.BookDAO" %>
 
-<% String id = request.getParameter("bookId");
-	int bid = Integer.parseInt(id);
+<% 
+	//int id = Integer.parseInt(request.getParameter("bookId")) ;
+	int id = (Integer)session.getAttribute("bid");
+	out.print("In uploads : "+id);
 %>
 <%
    File file ;
    int maxFileSize = 5000 * 1024;
    int maxMemSize = 5000 * 1024;
-   // String filePath = "D:/img/";
-
-	String filePath = "D:/img/";
+   String filePath = "D:/img/";
+   String filePath2 = "images/";	
+	
    String contentType = request.getContentType();
    if ((contentType.indexOf("multipart/form-data") >= 0)) {
 
@@ -57,21 +59,25 @@
                 file = new File( filePath + fileName) ;
                 fi.write( file ) ;
                 String imgPath = filePath + fileName;
-                
-              	int status = BookDAO.addImg(imgPath,bid );
+                String imgPath2 = filePath2 + fileName;
+              	int status = BookDAO.addImg(imgPath2, id);
                 if(status>0)
                 {
-                	out.println("Uploaded Filename: " + imgPath + "<br>");
+                	out.println("Uploaded Filename: " + imgPath2 + "<br>");
                 }
                 else
                 {
                 	out.println("Failed To upload");
                 } 
                 
-               	String path = BookDAO.getImg();
-                out.print(path);
-               
-                out.print(" <img src=path height='250px' width='200px'>");      
+               	out.print("<br/>");
+             
+               	%>
+               	
+               <a href="addbook.jsp"><h4>Add new Book</h4></a>
+               	
+               	<%
+                     
                 
             }
          }

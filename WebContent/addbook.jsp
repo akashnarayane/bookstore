@@ -21,15 +21,17 @@
 <jsp:setProperty property="*" name="b"/>  
 
 	<%  
-		Integer bid;
-		Book bk = new Book();
+		int bid;
 		int i=BookDAO.addBook(b);  
 		if(i>0)
 		{
-			session.setAttribute("bid", bk.getId());
+			int id = b.getId();
+			System.out.println("Inside addbook : "+id);
+			session.setAttribute("bid", id);
 	%>
 	<jsp:forward page="ImgUpload.jsp">
 	<jsp:param name="message" value="Book Addedd.."/>
+	
 	</jsp:forward>  
 	<%
 		}	

@@ -55,7 +55,7 @@
 </tr> 
 <tr>
   <td>Book id: </td>
-  <td><input name="id" type="text"></td>
+  <td><input name="id" type="number"></td>
 </tr>
 <tr>
   <td>Price:</td>
