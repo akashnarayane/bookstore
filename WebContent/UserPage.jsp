@@ -1,3 +1,4 @@
+<%@page import="com.bookstore.Book"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.bookstore.Users"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -279,6 +280,12 @@ $("#show-sidebar").click(function() {
 <main class="page-content">
     <div class="container-fluid">
 <!-- --------------------------------------------------------------------------------------- -->
+		
+		<%
+			BookDAO.tempTable(id);
+		
+		%>
+		
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 					<a href="" class="navbar-brand"><img src="Resources/images/cashewLogo.JPG" height="40px"></a>
 					<ul class="navbar-nav ml-auto">
@@ -287,10 +294,10 @@ $("#show-sidebar").click(function() {
 						</li>
 					
 						<li class="nav-item active">
-							<a class="nav-link" href="#">Home</a>
+							<a class="nav-link" href="UserPage.jsp">Home</a>
 						</li>
 						<li class="nav-item ">
-							<a class="nav-link" href="#">Cart</a>
+							<a class="nav-link" href="myCart.jsp">Cart</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="javascript:go()">Logout</a>
@@ -299,6 +306,8 @@ $("#show-sidebar").click(function() {
 						
 					</ul>
 				</nav>	
+				
+				 <span style="color:red"><%=request.getParameter("message") %></span> 
 <section id="Books" class="pb-5">
 	<div class="container">
 		<h5 class="section-title h1">Books</h5>

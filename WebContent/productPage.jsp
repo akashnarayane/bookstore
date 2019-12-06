@@ -35,12 +35,26 @@ function go() {
 	window.location.replace("UsrLogout.jsp",'window','toolbar=1,location=1,directories=1,status=1,menubar=1,scrollbars=1,resizable=1');
 	self.close()
 	}
+	
+	
+
+	function Total(qty,ud,total,value){
+	 qty=document.getElementById(qty);
+	 ud>0?qty.value++:qty.value--;
+	 qty.value=Math.max(qty.value,0);
+	 document.getElementById(total).value=qty.value*value;
+	 document.getElementById(item).value=qty;
+	}
+  
+	
+	
 </script>
 </head>
 <body>
 <%@page import="com.bookstore.BookDAO"%>  
 	<%
 		String id = request.getParameter("bookId");
+		session.setAttribute("bookid",id);
 		int bid = Integer.parseInt(id);
 	
 		
@@ -102,10 +116,26 @@ function go() {
      	<h1><%=bTitle %></h1><br><br>
      	<h5>Author : <%=bAuthor %></h5><br><br>
      	<h6>About book : <%=bDesc %></h6><br><br>
-     	<h3>Price : <%=bPrice%>&#8377;</h3><br><br>
+     	<h3>Price : <%=bPrice%>&#8377;</h3><br>
+    	
     </div>
     <div class="col-sm-2">
-      <button>Add to cart</button>
+    	 	    <div class="slider-vertical"></div>
+<div id="purhcaseForm">  
+	 <form id="purchase" action="cart.jsp" >
+		
+		 <br> Please Select Quantity<br>
+		 
+		 <input type='button' name='add' onclick='Total("qty",1,"total",<%=bPrice%>);' value='+'/>
+		 <input type='text' name='qty' id='qty' readonly=true value="0"/>
+		 <input type='text' name='total' id='total' value="0" />
+		 <input type='button' name='subtract' onclick='Total("qty",-1,"total",<%=bPrice%>);' value='-'/>
+		 <input type="submit" value="Add to cart">
+      </form>
+      
+    
+</div>
+      
     </div>
   </div>
 </div>

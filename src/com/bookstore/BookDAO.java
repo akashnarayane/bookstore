@@ -224,4 +224,46 @@ public class BookDAO
 		
 		return res;	
 	}
+	
+	public static void tempTable(int id)
+	{
+		String name = "user"+id;
+		int status =0;
+		Connection con;
+		try {
+			con = getConnection();
+			PreparedStatement ps = con.prepareStatement
+					("create table if not exists "+name+"(uid int, bid int not null, qty int not null)");
+		
+			status = ps.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{
+			
+			e.printStackTrace();
+		}
+		//return status;
+		
+	}
+	
+	public static int addToCart(int id, int bookid, int qty)
+	{
+		int status = 0;
+		String name = "user"+id;
+		Connection con;
+		
+		try {
+			con = getConnection();
+			PreparedStatement ps = con.prepareStatement
+					("insert into "+name+" values("+id+","+bookid+","+qty+")");
+			
+			status = ps.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{			
+			e.printStackTrace();
+		}	
+		return status;
+		
+	}
 }
