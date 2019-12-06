@@ -40,9 +40,12 @@ public class BookDAO
 		        ps.setInt(8,u.getPin_Code()); 
 		        status=ps.executeUpdate(); 
 		        
+		        con.close();
 		    }
 		    catch(Exception e){System.out.println(e);}  
+		   
 		    return status; 
+		   
 	}
 	
 	public static int chkUser(String username, String password, Users usr)
@@ -79,7 +82,8 @@ public class BookDAO
 				return status=0;	
 			}
 			else {
-				return status=-1;	
+				return status=-1;
+				
 			}
 			
 		} catch (SQLException e) {
@@ -264,6 +268,26 @@ public class BookDAO
 			e.printStackTrace();
 		}	
 		return status;
+		
+	}
+	
+	public static ResultSet getCart(Integer id)
+	{
+		int uid = id.intValue();
+		String name = "user"+id;
+		Connection con;
+		ResultSet rs = null;
+		try {
+			con = getConnection();
+			PreparedStatement ps = con.prepareStatement("select * from "+name);
+			
+			rs = ps.executeQuery();
+		} 
+		catch (SQLException e) 
+		{			
+			e.printStackTrace();
+		}	
+		return rs;
 		
 	}
 }
