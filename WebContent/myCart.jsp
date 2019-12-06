@@ -82,27 +82,38 @@ function go() {
 	<table border="1" width="100%">  
 	<tr>
 		<th>Image</th><th>Title</th><th>Price</th><th>Quantity</th>  
-		<th>Total Price</th><th>Buy Now</th><th>Delete</th>
+		<th>Total Price</th><th>Action</th>
 	</tr>	
 		<%
+		int totalPrice = 0;
+		int[] total = new int[bid.size()];
 			for(int i = 0; i<bid.size(); i++)
 			{
+				
+				total[i]= qty.get(i)*price.get(i);
 				%>
 				<tr>
 					<td><img src="<%=imgPath.get(i)%>" height="100px" width="75px"></td>
 					<td><%=title.get(i) %></td>
 					<td><%=price.get(i) %></td>
 					<td><%=qty.get(i) %></td>
-					<td><%=qty.get(i)*price.get(i) %></td>
-					<td><a href="#">Place Order</a></td>
+					<td><%=total[i]%></td>
 					<td><a href="#">Delete Order</a></td>
 				</tr>
 							
-				<%
+				<%	
+			}
+			
+			for(int j=0; j<price.size(); j++)
+			{
+				totalPrice =totalPrice+total[j];
 			}
 		%>
-		
-	 
 </table>
+<br><br>
+
+
+<h4>You have items in your cart worth <%=totalPrice%>&#8377;</h4>
+<h5>Click <a href="orderPage.jsp">here</a> to place your order</h5>
 </body>
 </html>
